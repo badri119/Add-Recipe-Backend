@@ -16,8 +16,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
-console.log("historical");
-
 const citiesCol = collection(db, "users");
 const citySnapshot = await getDocs(citiesCol);
 const cityList = citySnapshot.docs.map((doc) => {
