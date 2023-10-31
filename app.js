@@ -1,24 +1,16 @@
-import express from "express";
-import { recipe } from "./Routes/recipe.js";
-import { user } from "./Routes/users.js";
-
-const recipeRoute = recipe;
-const userRoute = user;
-
+require("dotenv").config();
+const mongoose = require("mongoose");
+const express = require("express");
 const app = express();
-const port = 3000;
 
-app.use("/recipe", recipeRoute);
-app.use("/user", userRoute);
+mongoose.connect(process.env.DATABASE_URL);
+const db = mongoose.connection;
+db.on("error", (error) => console.error(error));
+db.once("open", () => console.log("Connected to Database"));
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use(express.json());
 
-app.get("/users", (req, res) => {
-  res.send("These are the users");
-});
+const recipesRouter = require("./Routes/recipes");
+app.use("/recipes", recipesRouter);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+app.listen(3000, () => console.log("Server Started"));

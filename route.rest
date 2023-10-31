@@ -1,0 +1,17 @@
+GET http://localhost:3000/recipes
+
+###
+
+GET http://localhost:3000/recipes/333
+
+
+###
+
+POST http://localhost:3000/recipes/post
+Content-Type: application/json
+
+{
+    "name": "Pizza",
+    "ingredients": "['ketchi','kek','ajsdnkad']",
+    "preparation": "['ketchi','kek','ajsdnkad']"
+}
