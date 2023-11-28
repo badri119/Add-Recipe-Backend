@@ -1,17 +1,44 @@
-GET http://localhost:3000/recipes
+GET http://localhost:3001/recipes
 
 ###
 
-GET http://localhost:3000/recipes/333
+GET http://localhost:3001/recipes/333
 
 
 ###
 
-POST http://localhost:3000/recipes/post
+POST http://localhost:3001/recipes/post
 Content-Type: application/json
 
 {
     "name": "Pizza",
     "ingredients": "['ketchi','kek','ajsdnkad']",
     "preparation": "['ketchi','kek','ajsdnkad']"
+}
+
+###
+
+DELETE http://localhost:3001/recipes/654c691ce70efb067864a213
+
+
+###
+
+POST  http://localhost:3001/signup
+Content-Type: application/json
+
+{
+    "name": "Pizza2322",
+    "email": "tesasasdssdastsss@gmail.com",
+    "password": "AddRecipe123"
+}
+
+###
+
+POST http://localhost:3001/signin
+Content-Type: application/json
+
+
+{
+    "email": "badri@badri.com",
+    "password": "192427gvBk!("
 }

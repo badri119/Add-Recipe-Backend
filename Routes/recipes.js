@@ -35,10 +35,13 @@ router.post("/post", async (req, res) => {
 });
 
 //modyfying a recipe
-router.patch("/postid", (req, res) => {});
+router.patch("/:postid", (req, res) => {});
 
 //deleting a recipe
 
-router.delete("/postid", (req, res) => {});
+router.delete("/:postid", (req, res) => {
+  console.log(req.params.postid);
+  res.send("done and deleted" + req.params.postid);
+});
 
 module.exports = router;
