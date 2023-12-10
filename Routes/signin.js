@@ -8,6 +8,8 @@ router.post("/", async (req, res) => {
 
   try {
     const existingEmail = await User.findOne({ email });
+    const userid = existingEmail._id;
+    console.log(userid);
 
     if (!existingEmail) {
       return res.status(404).json({ message: "User not found" });
@@ -22,7 +24,9 @@ router.post("/", async (req, res) => {
       return res.status(401).json({ message: "Invalid password" });
     }
 
-    res.status(200).json({ message: "User successfully signed in" });
+    res
+      .status(200)
+      .json({ message: "User successfully signed in", userid: userid });
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });
   }

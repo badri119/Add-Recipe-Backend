@@ -11,14 +11,15 @@ POST http://localhost:3001/recipes/post
 Content-Type: application/json
 
 {
-    "name": "Pizza",
+    "userid": "87123687137621823",
+    "recipename": "Pizza",
     "ingredients": "['ketchi','kek','ajsdnkad']",
-    "preparation": "['ketchi','kek','ajsdnkad']"
+    "preparation": "['do this','do that','soak, boil, heat']"
 }
 
 ###
 
-DELETE http://localhost:3001/recipes/654c691ce70efb067864a213
+DELETE http://localhost:3001/recipes/657409d68c37f65c5d50f53a
 
 
 ###

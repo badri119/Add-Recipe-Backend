@@ -1,11 +1,15 @@
 const mongoose = require("mongoose");
 
 const recipeschmea = new mongoose.Schema({
+  userid: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
   recipename: {
     type: String,
     required: true,
   },
-  ingreidients: {
+  ingredients: {
     type: Array,
     required: true,
   },

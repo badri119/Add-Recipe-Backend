@@ -23,7 +23,11 @@ router.post("/", async (req, res) => {
 
   try {
     const newUser = await user.save();
-    res.status(200).json({ message: "User created successfully" });
+    // console.log(newUser);
+    const userid = newUser._id;
+    res
+      .status(200)
+      .json({ message: "User created successfully", userid: userid });
   } catch (err) {
     res.status(500).json({ message: "Internal Server Error" });
   }
