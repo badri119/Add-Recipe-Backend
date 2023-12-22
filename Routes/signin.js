@@ -7,10 +7,13 @@ const fs = require("fs");
 const path = require("path");
 
 const privateKey = fs.readFileSync(
-	path.join(__dirname, "keys", "rsa.key"),
+  path.join(
+    require.main.path,
+    "keys",
+    "rsa.key"
+  ),
 	"utf8"
 );
-
 
 router.post("/", async (req, res) => {
   const { email, password } = req.body;

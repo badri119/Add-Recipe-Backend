@@ -7,7 +7,11 @@ const path = require("path");
 const verifyToken = (req, res, next) => {
 
   const publicKey = fs.readFileSync(
-		path.join(__dirname, "keys", "rsa.key.pub"),
+		path.join(
+			require.main.path,
+			"keys",
+			"rsa_pub.key"
+		),
 		"utf8"
 	);
 
