@@ -1,14 +1,26 @@
 //Creating a Middleware
 
 const jwt = require("jsonwebtoken");
+const fs = require("fs");
+const path = require("path");
 
 const verifyToken = (req, res, next) => {
+
+  const publicKey = fs.readFileSync(
+		path.join(__dirname, "keys", "rsa.key.pub"),
+		"utf8"
+	);
+
   const token = req.header("Auth_Token");
 
   if (!token) return res.status(401).send("Access Denied");
 
   try {
-    const verified = jwt.verify(token, process.env.TOKEN_SECRET);
+    const verified = jwt.verify(
+			token,
+			publicKey,
+			{ algorithm: "RS256" }
+		);
     req.existingEmail = verified;
     next();
   } catch (err) {

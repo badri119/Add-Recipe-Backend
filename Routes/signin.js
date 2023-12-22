@@ -3,6 +3,14 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
+const fs = require("fs");
+const path = require("path");
+
+const privateKey = fs.readFileSync(
+	path.join(__dirname, "keys", "rsa.key"),
+	"utf8"
+);
+
 
 router.post("/", async (req, res) => {
   const { email, password } = req.body;
@@ -27,7 +35,10 @@ router.post("/", async (req, res) => {
     // console.log(userid);
 
     //Create a JSON web token
-    const token = jwt.sign({ _id: userid }, process.env.TOKEN_SECRET);
+    const payload = { _id: userid }
+    const token = jwt.sign(payload, privateKey, {
+			algorithm: "RS256",
+		});
 
     res
       .status(200)
