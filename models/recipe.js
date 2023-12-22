@@ -1,11 +1,20 @@
 const mongoose = require("mongoose");
 
 const recipeschmea = new mongoose.Schema({
+  userid: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
   recipename: {
     type: String,
     required: true,
   },
-  ingreidients: {
+  type: {
+    type: String,
+    enum: ["Entree", "Mains", "Dessert", "Drink"],
+    required: true,
+  },
+  ingredients: {
     type: Array,
     required: true,
   },
