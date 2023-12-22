@@ -10,7 +10,9 @@ router.get("/", verify, async (req, res) => {
     const recipes = await Recipe.find();
     res.json(recipes);
   } catch (err) {
-    res.status(500).json({ message: "Internal Server Error" });
+    res
+			.status(500)
+			.json({ message: err.message });
   }
 });
 
@@ -21,7 +23,9 @@ router.get("/:postid", verify, async (req, res) => {
     const recipeid = await Recipe.findById(req.params.postid);
     res.json(recipeid);
   } catch (err) {
-    res.status(500).json({ message: "Internal Server Error" });
+    res
+			.status(500)
+			.json({ message: err.message });
   }
 });
 
@@ -57,7 +61,9 @@ router.patch("/:id", verify, async (req, res) => {
     console.log(result);
     res.send(result);
   } catch (err) {
-    res.status(400).json({ message: "Could not edit recipe" });
+    res
+			.status(400)
+			.json({ message: err.message });
   }
 });
 
@@ -76,7 +82,7 @@ router.delete("/:id", verify, async (req, res) => {
     await Recipe.findByIdAndDelete(recipeId);
     res.status(200).json({ message: "Recipe deleted successfully" });
   } catch (err) {
-    res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({ message: err.message });
   }
 });
 
