@@ -2,7 +2,7 @@ GET http://localhost:3001/recipes
 
 ###
 
-GET http://localhost:3001/recipes/333
+GET http://localhost:3001/recipes/65827e64beaa389a4b4eb32b
 
 
 ###
@@ -29,7 +29,7 @@ Content-Type: application/json
 
 {
     "name": "Pizza2322",
-    "email": "tesasasdssdastsss@gmail.com",
+    "email": "tesasasdssssdastsss@gmail.com",
     "password": "AddRecipe123"
 }
 
@@ -43,3 +43,16 @@ Content-Type: application/json
     "email": "badri@badri.com",
     "password": "192427gvBk!("
 }
+
+###
+
+PATCH http://localhost:3001/recipes/6582af59c07e70b10afe2991
+Content-Type: application/json
+
+
+{
+    "recipename": "kumar",
+    "ingredients": "['Bee, Broth, Sugar, Recipes']",
+    "preparation": "['Juice, Chocolate, Pizza']"
+}
+

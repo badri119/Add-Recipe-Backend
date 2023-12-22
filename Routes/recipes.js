@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Recipe = require("../models/recipe");
+const verify = require("./verifyToken");
 //Getting all Recipes
 
-router.get("/", async (req, res) => {
+router.get("/", verify, async (req, res) => {
   // res.send("Hello World!");
   try {
     const recipes = await Recipe.find();
@@ -15,18 +16,24 @@ router.get("/", async (req, res) => {
 
 // Getting one recipe based on ID
 
-router.get("/:postid", (req, res) => {
-  res.send(req.params.postid);
+router.get("/:postid", verify, async (req, res) => {
+  try {
+    const recipeid = await Recipe.findById(req.params.postid);
+    res.json(recipeid);
+  } catch (err) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
 });
 
 //creating a recipe
-router.post("/post", async (req, res) => {
+router.post("/post", verify, async (req, res) => {
   // console.log(req.body.ingredients.split(","));
   const recipe = new Recipe({
     userid: req.body.userid,
     recipename: req.body.recipename,
+    type: req.body.type,
     ingredients: req.body.ingredients.split(","),
-    preparation: req.body.preparations.split(","),
+    preparation: req.body.preparation.split(","),
   });
 
   try {
@@ -39,11 +46,24 @@ router.post("/post", async (req, res) => {
 });
 
 //modyfying a recipe
-router.patch("/:id", (req, res) => {});
+router.patch("/:id", verify, async (req, res) => {
+  try {
+    const recipeId = req.params.id;
+    const updatedData = req.body;
+    // console.log(updatedData);
+    const result = await Recipe.findByIdAndUpdate(recipeId, updatedData, {
+      new: true,
+    });
+    console.log(result);
+    res.send(result);
+  } catch (err) {
+    res.status(400).json({ message: "Could not edit recipe" });
+  }
+});
 
 //deleting a recipe
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", verify, async (req, res) => {
   try {
     const recipeId = req.params.id;
     console.log(recipeId);
