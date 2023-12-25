@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Recipe = require("../models/recipe");
 const verify = require("./verifyToken");
+const User = require("../models/user");
 //Getting all Recipes
 
 router.get("/", verify, async (req, res) => {
@@ -29,6 +30,7 @@ router.get("/:postid", verify, async (req, res) => {
 router.post("/post", verify, async (req, res) => {
   // console.log(req.body.ingredients.split(","));
   const recipe = new Recipe({
+    username: req.body.username,
     userid: req.body.userid,
     recipename: req.body.recipename,
     type: req.body.type,
