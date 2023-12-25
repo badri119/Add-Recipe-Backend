@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const recipeschmea = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+  },
   userid: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
