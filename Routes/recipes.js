@@ -28,7 +28,7 @@ router.get("/:postid", verify, async (req, res) => {
 
 //creating a recipe
 router.post("/post", verify, async (req, res) => {
-  console.log(req.body.ingredients.split(","));
+  // console.log(req.body.ingredients.split(","));
   const recipe = new Recipe({
     username: req.body.username,
     userid: req.body.userid,
@@ -37,7 +37,7 @@ router.post("/post", verify, async (req, res) => {
     ingredients: req.body.ingredients.split(","),
     preparation: req.body.preparation.split(","),
   });
-  console.log(req.body.ingredients);
+  // console.log(req.body.ingredients);
 
   try {
     const newRecipe = await recipe.save();
