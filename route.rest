@@ -27,22 +27,11 @@ DELETE http://localhost:3001/recipes/657409d68c37f65c5d50f53a
 POST  http://localhost:3001/signup
 Content-Type: application/json
 
-{
-    "name": "Pizza2322",
-    "email": "tesasasdssssdastsss@gmail.com",
-    "password": "AddRecipe123"
-}
-
 ###
 
 POST http://localhost:3001/signin
 Content-Type: application/json
 
-
-{
-    "email": "badri@badri.com",
-    "password": "192427gvBk!("
-}
 
 ###
 

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Recipe = require("../models/recipe");
-const verify = require("./verifyToken");
+const verify = require("./verifyToken"); // Middleware to check if user has a token and if not, send a 401 access denied error
 const User = require("../models/user");
 //Getting all Recipes
 
