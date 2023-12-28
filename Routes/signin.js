@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
     const username = existingEmail.name;
     // console.log(userid);
 
-    //Create a JSON web token
+    //Create a JSON web token on login
     const token = jwt.sign({ _id: userid }, process.env.TOKEN_SECRET);
 
     res.status(200).json({

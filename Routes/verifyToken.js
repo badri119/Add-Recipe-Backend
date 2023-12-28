@@ -1,4 +1,4 @@
-//Creating a Middleware for user Authentication
+//Creating a Middleware for user Authentication using JWT
 
 const jwt = require("jsonwebtoken");
 
