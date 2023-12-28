@@ -16,7 +16,6 @@ router.get("/", verify, async (req, res) => {
 });
 
 // Getting one recipe based on ID
-
 router.get("/:postid", verify, async (req, res) => {
   try {
     const recipeid = await Recipe.findById(req.params.postid);
@@ -64,8 +63,7 @@ router.patch("/:id", verify, async (req, res) => {
   }
 });
 
-//deleting a recipe
-
+//deleting a recipes
 router.delete("/:id", verify, async (req, res) => {
   try {
     const recipeId = req.params.id;
