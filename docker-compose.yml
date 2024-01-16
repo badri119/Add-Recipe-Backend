@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  #MongoDB Service
+  mongodb: #if container name is not specified, it will start with "mongodb"
+    container_name: db_container
+    image: mongo:latest
+    restart: always #if it fails, it should be restarted always
+    volumes:
+      - mongodb:/data/db
+
+  #Nodejs Service
+  api:
+    container_name: node_container
+    build: .
+    ports:
+      - 4000:3001
+    environment:
+      DATABASE_URL: mongodb+srv://badrinathv98:192427gvBk!(@cluster0.8qhopj6.mongodb.net/
+      TOKEN_SECRET: uaisdhuiahdsuhashdaouh
+    depends_on:
+      - mongodb #it depends on mongodb because we passed in mongodb credentials and it does require the mongodb service
+
+volumes:
+  mongodb: {}

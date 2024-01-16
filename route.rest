@@ -1,4 +1,4 @@
-GET http://localhost:3001/recipes
+GET http://localhost:4000/recipes
 
 ###
 
@@ -24,12 +24,12 @@ DELETE http://localhost:3001/recipes/657409d68c37f65c5d50f53a
 
 ###
 
-POST  http://localhost:3001/signup
+POST  http://localhost:4000/signup
 Content-Type: application/json
 
 ###
 
-POST http://localhost:3001/signin
+POST http://localhost:4000/signin
 Content-Type: application/json
 
 

@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const recipeschmea = new mongoose.Schema({
+  // img: {
+  //   data: Buffer,
+  //   contentType: String,
+  // },
   username: {
     type: String,
     required: true,

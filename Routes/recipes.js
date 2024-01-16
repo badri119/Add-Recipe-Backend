@@ -3,6 +3,7 @@ const router = express.Router();
 const Recipe = require("../models/recipe");
 const verify = require("./verifyToken"); // Middleware to check if user has a token and if not, send a 401 access denied error
 const User = require("../models/user");
+const multer = require("multer");
 //Getting all Recipes
 
 router.get("/", verify, async (req, res) => {
@@ -25,10 +26,22 @@ router.get("/:postid", verify, async (req, res) => {
   }
 });
 
+//Adding an image
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "uploads/");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname);
+//   },
+// });
+// const upload = multer({ storage: storage });
+
 //creating a recipe
 router.post("/post", verify, async (req, res) => {
   // console.log(req.body.ingredients.split(","));
   const recipe = new Recipe({
+    // image: req.file.filename,
     username: req.body.username,
     userid: req.body.userid,
     recipename: req.body.recipename,
