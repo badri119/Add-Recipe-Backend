@@ -47,7 +47,7 @@ router.post("/post", verify, async (req, res) => {
     recipename: req.body.recipename,
     type: req.body.type,
     ingredients: req.body.ingredients.split(","),
-    preparation: req.body.preparation.split(","),
+    preparation: req.body.preparation.split("\n"),
   });
   // console.log(req.body.ingredients);
 
